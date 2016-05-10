@@ -1,0 +1,10 @@
+*zip
+PACKAGES
+PKGS
+SIMULS
+tmp
+.DS_Store
+.bundle
+.swp
+.vagrant
+mechsys_pkg
