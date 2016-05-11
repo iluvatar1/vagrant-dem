@@ -10,7 +10,7 @@ fi
 if [ ! -f /usr/local/bin/dem.x ]; then
     cd dem
     bash addons/install_dependencies.sh
-    make -j 1 OPT=1 WITH_NETCDF=1 WITH_VTK=1
+    make -j 1 OPT=1 WITH_NETCDF=1 
     for prog in dem.x postpro_main.x prepro_initializer.x postpro_display_paraview.x; do
 	ln -sf $PWD/bin/${prog} /usr/local/bin/${prog}
     done
