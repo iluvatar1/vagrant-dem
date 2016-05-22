@@ -28,7 +28,7 @@ PACKAGES=(git python-pip build-essential m4 gfortran libncurses5-dev libigraph0-
 # texlive)
 echo "Installing the following packages : ${PACKAGES[@]} ..."
 for a in ${PACKAGES[@]}; do
-    if [ ! $(dpkg -l $a | tail -n 1 | awk '{print ($1 == "ii")}') ]; then 
+    if [ 0 -eq $(dpkg -l $a | tail -n 1 | awk '{print ($1 == "ii")}') ]; then 
 	printf "\nINSTALLING : $a"
 	apt-get install -y $a &>> /var/log/log-install-packs
 	printf "Installation STATUS: $?\n\n"
