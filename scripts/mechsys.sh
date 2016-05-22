@@ -1,3 +1,5 @@
+echo "EXECUTING : mechsys.sh"
+
 MECHSYS_ROOT=~/PACKAGES/MECHSYS
 export MECHSYS_ROOT
 
@@ -33,7 +35,20 @@ if [ ! -d msys_tutorial ]; then
     tar xf msys_tutorial.tar.gz
     cd msys_tutorial
     cmake ./
-    make &> /dev/null
+    make -j 2 &> /dev/null
 fi
+
+if [ ! $(command -v visit) ]; then
+    echo "Configuring visit"
+    if [ ! -f visit2_10_2.linux-x86_64-ubuntu14.tar.gz ]; then 
+	wget -c http://portal.nersc.gov/project/visit/releases/2.10.2/visit2_10_2.linux-x86_64-ubuntu14.tar.gz
+    fi
+    if [ ! -d visit2_10_2.linux-x86_64 ]; then 
+	tar xf visit2_10_2.linux-x86_64-ubuntu14.tar.gz
+    fi
+    if [ "" == "$(grep visit2 ~/.bashrc | grep -v grep)" ]; then
+	echo export PATH=$PATH:~/PACKAGES/MECHSYS/visit2_10_2.linux-x86_64/bin >> ~/.bashrc
+    fi
+fi    
 
 echo "Done."
