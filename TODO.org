@@ -1,2 +1,0 @@
-* Add open lattice Boltzmann to instalation
-  URL: [[http://optilb.org/openlb/]] 
