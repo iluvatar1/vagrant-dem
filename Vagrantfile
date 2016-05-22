@@ -15,10 +15,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.network "private_network", type: "dhcp"
   
-  config.vm.define :granular2 do |srv|
+  config.vm.define :granular do |srv|
     srv.vm.hostname = "darkstar"
-    srv.vm.synced_folder "SIMULS/", "/home/vagrant/Desktop/SIMULS", create: true
-    srv.vm.synced_folder "PACKAGES/", "/home/vagrant/PACKAGES", create: true
+    srv.vm.synced_folder "SIMULS/", "/home/vagrant/Desktop/SIMULS", create: true, owner: "vagrant"
+    srv.vm.synced_folder "PACKAGES/", "/home/vagrant/PACKAGES", create: true, owner: "vagrant"
     srv.vm.network "forwarded_port", guest: 8888, host: 8088 # ipython notebook default port
     ## Provisions
     # Fix annoying stdin message
@@ -27,15 +27,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
     end
     # General config
+    srv.vm.provision :shell, run: "always", privileged:false,  path: "scripts/config.sh"
     srv.vm.provision :shell, run: "always", privileged:true,  path: "scripts/packages.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/anaconda.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/liggghts.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/lmgc90.sh"
-    srv.vm.provision :shell, run: "always", privileged:true,  path: "scripts/yade.sh"
+    srv.vm.provision :shell, run: "always", privileged:false,  path: "scripts/sandbox.sh"
+    srv.vm.provision :shell, run: "always", privileged:false,  path: "scripts/dem.sh"
+    srv.vm.provision :shell, run: "always", privileged:false,  path: "scripts/yade.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/mechsys.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/mercurydpm.sh"
-    srv.vm.provision :shell, run: "always", privileged:true,  path: "scripts/dem.sh"
-    srv.vm.provision :shell, run: "always", privileged:true,  path: "scripts/sandbox.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/start-jupyter-notebook.sh"
     #srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/startx.sh"
     # Gui
