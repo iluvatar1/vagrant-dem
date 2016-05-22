@@ -35,8 +35,8 @@ for a in ${PACKAGES[@]}; do
     fi
 done
 
-#echo "Removing not needed packages "
-#apt-get -y autoremove
+echo "Removing not needed packages "
+apt-get -y autoremove
 
 
 # Fix some errors with dictionaries 
