@@ -9,7 +9,7 @@ cd ${BDIR}
 
 #wget -c http://www.vtk.org/files/release/6.3/vtkpython-6.3.0-Linux-64bit.tar.gz 
 
-echo vagrant | sudo apt-get install -y gmsh python-vtk gmsh libgmsh-dev 
+echo vagrant | sudo apt-get install -y gmsh python-vtk6 gmsh libgmsh-dev 
 conda install -y vtk
 pip install -y pygmsh 
 
