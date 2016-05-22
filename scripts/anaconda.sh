@@ -6,15 +6,17 @@ if [ ! -d ANACONDA ] ; then
 fi
 cd ANACONDA
 
+FNAME=Anaconda2-2.5.0-Linux-x86_64.sh
+
 echo "Installing and configuring  Anaconda ..."
-if [ ! -f Anaconda2-2.5.0-Linux-x86.sh ]; then
+if [ ! -f ${FNAME} ]; then
     echo "Downloading anaconda."
-    wget -c  https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-2.5.0-Linux-x86_64.sh
+    wget -c  https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/${FNAME}
 fi
 
 if [ ! -f /home/vagrant/anaconda2/bin/conda ]; then
     echo "Installing Anaconda ..."
-    bash Anaconda2-2.5.0-Linux-x86_64.sh -b
+    bash ${FNAME} -b
 fi
 
 touch /home/vagrant/.bashrc
