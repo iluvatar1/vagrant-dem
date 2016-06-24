@@ -36,8 +36,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     srv.vm.provision :shell, run: "always", privileged:false,  path: "scripts/dem.sh"
     srv.vm.provision :shell, run: "always", privileged:false,  path: "scripts/yade.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/mechsys.sh"
-    srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/mercurydpm.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/openlb.sh"
+    srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/mercurydpm.sh"
     srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/start-jupyter-notebook.sh"
     #srv.vm.provision :shell, run: "always", privileged:false, path: "scripts/startx.sh"
     # Gui
