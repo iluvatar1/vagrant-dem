@@ -1,4 +1,12 @@
-* TODO Add open lattice Boltzmann to instalation
+* Description
+  This repository includes a vagrant file and some scripts designed to
+  create a virtual machine to perform DEM (Discrete Element Method)
+  simulations with several packages. It uses a basebox I have created,
+  based on linux mint 17.1.
+
+* Todo list
+* DONE Add open lattice Boltzmann to instalation
+  CLOSED: [2016-06-24 Fri 08:47]
   URL: [[http://optilb.org/openlb/]] 
 * DONE Install visit and igraph for mechsys
   CLOSED: [2016-05-20 Fri 22:27]
